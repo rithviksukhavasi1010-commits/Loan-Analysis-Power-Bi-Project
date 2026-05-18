@@ -1,4 +1,5 @@
 Created Columns in the data set
+
 Year = Year('Loan_default (1)'[Loan_Date_DD_MM_YYYY].[Date])
 
 Income Bracket = SWITCH(TRUE(),'Loan_default (1)'[Income]<30000,"LOW INCOME",'Loan_default (1)'[Income]>=30000 && 'Loan_default (1)'[Income]<60000,"MEDIUM INCOME",'Loan_default (1)'[Income]>=60000,"HIGH INCOME")
@@ -66,7 +67,7 @@ YOY Default Loans Change =
 
         ,CALCULATE(COUNTROWS(FILTER('Loan_default (1)','Loan_default (1)'[Default]=TRUE())),'Loan_default (1)'[Year]=YEAR(MAX('Loan_default (1)'[Loan_Date_DD_MM_YYYY]))-1),0)*100
 
-        YOY loan amount change = 
+YOY loan amount change = 
 DIVIDE(
     CALCULATE(SUM('Loan_default (1)'[LoanAmount]),
     'Loan_default (1)'[Year]=YEAR(MAX('Loan_default (1)'[Loan_Date_DD_MM_YYYY]))) - 
@@ -74,5 +75,5 @@ DIVIDE(
 
     , CALCULATE(SUM('Loan_default (1)'[LoanAmount]),'Loan_default (1)'[Year]=YEAR(MAX('Loan_default (1)'[Loan_Date_DD_MM_YYYY]))-1),0)*100
 
-    YTD Loan Amount = CALCULATE(SUM('Loan_default (1)'[LoanAmount]),DATESYTD('Loan_default (1)'[Loan_Date_DD_MM_YYYY].[Date]),ALLEXCEPT('Loan_default (1)','Loan_default (1)'[Credit score bins],'Loan_default (1)'[MaritalStatus]))
+YTD Loan Amount = CALCULATE(SUM('Loan_default (1)'[LoanAmount]),DATESYTD('Loan_default (1)'[Loan_Date_DD_MM_YYYY].[Date]),ALLEXCEPT('Loan_default (1)','Loan_default (1)'[Credit score bins],'Loan_default (1)'[MaritalStatus]))
     
