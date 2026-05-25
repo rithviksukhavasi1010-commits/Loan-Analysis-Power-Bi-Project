@@ -124,4 +124,4 @@ Dashboard screenshots are available inside the Screenshots folder.
 ---
 
 # Author
-Rithvik Sukhavasi
+Rithvik.S
